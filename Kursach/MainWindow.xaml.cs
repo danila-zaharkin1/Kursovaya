@@ -24,5 +24,47 @@ namespace Kursach
         {
             InitializeComponent();
         }
+
+
+
+        private void TextBox1_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxPassword.Text = "";
+        }
+
+        private void TextBox2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxEmail.Text = "";
+        }
+
+        private void Button_Enter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Regist_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBoxPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBoxEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBoxEmail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxEmail.Text = "Введите почту...";
+        }
+
+        private void TextBoxPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxPassword.Text = "Введите пароль...";
+        }
     }
 }

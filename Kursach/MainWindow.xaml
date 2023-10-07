@@ -6,7 +6,140 @@
         xmlns:local="clr-namespace:Kursach"
         mc:Ignorable="d"
         Title="MainWindow" Height="1024" Width="1440">
+    <Window.Background>
+        <ImageBrush ImageSource="images\fon_window.png" Opacity="1" />
+    </Window.Background>
     <Grid>
-        
+        <Grid.RowDefinitions>            
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <WrapPanel
+            Margin="175,15,1,1"
+            Grid.Column="1"
+            Grid.Row="4">            
+            <Label
+                FontSize="30"
+                FontFamily="0"
+                Foreground="White"
+                Content="Disign Lab">                
+            </Label>
+        </WrapPanel>
+        <WrapPanel
+            Margin="65,0,0,0"
+            Grid.Row="7"
+            Grid.Column="1">
+            <Label
+                FontSize="12"
+                Foreground="White"
+                Content="Забыли пароль?">                
+            </Label>
+        </WrapPanel>
+        <WrapPanel
+            Grid.Row="5"
+            Grid.Column="1"
+            Margin="40,0,0,0">             
+            <TextBox
+                GotFocus="TextBox2_GotFocus"
+                LostFocus="TextBoxEmail_LostFocus"
+                Name="TextBoxEmail"
+                BorderBrush="White"  
+                Text="Введите почту..."
+                FontSize="18"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Height="53"
+                Width="420" TextChanged="TextBoxEmail_TextChanged">                
+                <TextBox.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter
+                                Property="CornerRadius" Value="30"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </WrapPanel>
+        <WrapPanel
+            Grid.Row="6"
+            Grid.Column="1"
+            Margin="40,0,0,0">
+            <TextBox
+                GotFocus="TextBox1_GotFocus"
+                LostFocus="TextBoxPassword_LostFocus"
+                Name="TextBoxPassword"               
+                Height="53"
+                Width="420"
+                Text="Введите пароль..."
+                FontSize="18"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center" TextChanged="TextBoxPassword_TextChanged">
+                <TextBox.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter
+                                Property="CornerRadius" Value="30"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </WrapPanel>
+        <WrapPanel
+            Margin="40,8,0,0"
+            Grid.Row="8"
+            Grid.Column="1">
+            <Button
+                x:Name="Button_Enter"
+                Click="Button_Enter_Click"
+                FontSize="18"
+                Content="Войти"
+                Height="53"
+                Width="420"
+                Foreground="White"
+                Background="Gray">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+            </Button>          
+                       
+        </WrapPanel>
+        <WrapPanel
+            Margin="40,8,0,0"
+            Grid.Row="9"
+            Grid.Column="1">
+            <Button
+                Name="Button_Regist"
+                Click="Button_Regist_Click"
+                FontSize="18"                
+                Content = "Регистрация"
+                Height="53"
+                Width="420"
+                Foreground="White"
+                Background="Gray">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </WrapPanel>
     </Grid>
 </Window>
