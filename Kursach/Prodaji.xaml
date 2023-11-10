@@ -1,0 +1,170 @@
+﻿<Page x:Class="Kursach.Prodaji"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursach"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024" d:DesignWidth="1440"
+      Title="Prodaji" Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="Black">
+            <Label
+                Content="Design Lab"
+                Foreground="White"
+                FontSize="30"
+                Margin="65,5,0,0"
+                FontFamily="/fonts/#Inika">
+            </Label>
+            <Button
+                Style="{DynamicResource ButtonStyle}"
+                Content="Товары"
+                FontSize="20"
+                Foreground="White"
+                Margin="0,-50,250,0"
+                Width="90"
+                Background="Black"
+                BorderThickness="0"
+                Click="Button_Click"></Button>
+            <Button
+                Style="{DynamicResource ButtonStyle}"
+                Content="Продажи"
+                FontSize="20"
+                Foreground="White"
+                Margin="250,-50,0,0"
+                Width="90"
+                Background="Black"
+                BorderThickness="0,0,0,3"></Button>
+            <Button
+                Name="But_exit"
+                Style="{DynamicResource ButtonStyle}"
+                Content="Выйти"
+                Width="100"
+                Height="50"
+                Background="White"
+                Margin="1400,-50,0,0" Click="But_exit_Click_1">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Rectangle Height="1" Width="1300" Fill="White" Margin="0,0,100,0"></Rectangle>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,-20,0,0">
+            <Button
+                Name="But_day"
+                Content="День" 
+                Height="37" Width="453"
+                Margin="-906,0,0,0"
+                Background="White"
+                FontSize="18"
+                Style="{DynamicResource ButtonStyle}">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15,0,0,15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button
+                Name="But_Week"
+                Content="Неделя"
+                Height="37" Width="453"
+                Background="White"
+                FontSize="18"
+                Margin="0,-37,0,0"
+                Style="{DynamicResource ButtonStyle}"></Button>
+            <Button
+                Name="But_month"
+                Content="Месяц"
+                Height="37" Width="453"
+                Margin="906,-37,0,0"
+                Background="White"
+                FontSize="18"
+                Style="{DynamicResource ButtonStyle}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <WrapPanel
+            Grid.Row="3"
+            Grid.RowSpan="10">
+            <ListBox  
+                Name="TovariList"
+                Margin="85,0,0,0"
+                Width="1365"
+                Height="500"
+                BorderThickness="1"
+                BorderBrush="Black">
+            </ListBox>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Center"
+                   Grid.Row="2"
+                   Margin="-30,30,0,0">
+            <TextBlock Width="700"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Text="Название"
+                           HorizontalAlignment="Center"/>
+            <TextBlock Width="310"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Text="Размер"
+                           HorizontalAlignment="Center"/>
+            <TextBlock Width="310"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Text="Стоимость"
+                           HorizontalAlignment="Center"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="11"
+                   Margin="0,0,0,0">
+            <TextBlock
+            Text="Количество проданных товаров :"
+            FontSize="26"
+            FontWeight="Bold"
+            Margin="88,10,0,0"
+            Width="auto">
+            </TextBlock>
+            <TextBlock
+            Text="Общая сумма продаж :"
+            FontSize="26"
+            FontWeight="Bold"
+            Margin="1000,-33,0,0"
+            Width="auto"></TextBlock>
+            <TextBlock
+            Text="писят два"
+            FontSize="26"
+            Margin="530,-35,0,0"
+            Width="auto"></TextBlock>
+            <TextBlock
+            Text="пися два"
+            FontSize="26"
+            Margin="1310,-34,0,0"
+            Width="auto"></TextBlock>
+        </WrapPanel>
+    </Grid>
+</Page>

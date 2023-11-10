@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Kursach.Entities;
 
 namespace Kursach
 {
@@ -20,6 +21,7 @@ namespace Kursach
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ShowroomEntities db = new ShowroomEntities();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,8 +31,16 @@ namespace Kursach
 
         private void Button_Enter_Click(object sender, RoutedEventArgs e)
         {
-            new Window2().Show();
-            Hide();
+            var stuff = db.Stuffs.FirstOrDefault(s => s.Number == TextBoxEmail.Text && s.Pass == TextBoxPassword.Text);
+            if (stuff != null)
+            {
+                new Window1().Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Пользователя не существует");
+            }
         }
 
 

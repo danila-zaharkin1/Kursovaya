@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Kursach"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow" Height="1024" Width="1440">
+        Title="MainWindow" Height="1024" Width="1440">    
     <Window.Background>
-        <ImageBrush ImageSource="images\fon_window.png" Opacity="1" />
+        <ImageBrush ImageSource="images\fon_window.png" Opacity="1"/>
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>            
@@ -32,12 +32,12 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <WrapPanel
-            Margin="175,15,1,1"
+            Margin="175,10,1,1"
             Grid.Column="1"
             Grid.Row="4">            
             <Label
                 FontSize="30"
-                FontFamily="0"
+                FontFamily="/fonts/#inika"
                 Foreground="White"
                 Content="Disign Lab">                
             </Label>
@@ -96,6 +96,7 @@
             Grid.Row="8"
             Grid.Column="1">
             <Button
+                Style="{DynamicResource ButtonStyle}"
                 x:Name="Button_Enter"
                 Click="Button_Enter_Click"
                 FontSize="18"
