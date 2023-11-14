@@ -14,10 +14,10 @@ namespace Kursach.Entities
     
     public partial class Sells
     {
-        public int ID { get; set; }
-        public Nullable<int> StuffID { get; set; }
-        public Nullable<int> TovarID { get; set; }
-        public string KOlVoTOvarov { get; set; }
+        public System.Guid IDSell { get; set; }
+        public System.Guid StuffID { get; set; }
+        public System.Guid TovarID { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
     
         public virtual Stuffs Stuffs { get; set; }
         public virtual Tovari Tovari { get; set; }

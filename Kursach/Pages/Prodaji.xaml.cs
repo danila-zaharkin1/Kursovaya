@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursach.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Kursach
         public Prodaji()
         {
             InitializeComponent();
+            ProdajiiList.ItemsSource = new ShowroomEntities().Sells.ToList();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

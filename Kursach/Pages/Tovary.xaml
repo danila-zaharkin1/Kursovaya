@@ -12,19 +12,34 @@
         <DataTemplate x:Key="ClientsTemplate">
             <WrapPanel>
                 <TextBlock
+                    Text="{Binding TovarCode}"
+                    HorizontalAlignment="Center"
+                    Width="300"
+                    FontSize="20"></TextBlock>
+                <TextBlock
                     Text="{Binding Name}"
                     HorizontalAlignment="Center"
-                    Width="700"
+                    Width="500"
                     FontSize="20">
                 </TextBlock>
                 <TextBlock
                     Text="{Binding Sizes.Name}"
                     Width="310"
-                    FontSize="20"></TextBlock>
+                    FontSize="20"
+                    VerticalAlignment="Center"></TextBlock>
                 <TextBlock
                     Text="{Binding Price}"
-                    Width="310"
+                    Width="110"
                     FontSize="20"></TextBlock>
+                <Button
+                    Name="BtnEdit"
+                    Click="BtnEdit_Click"
+                    Content="Редактировать"
+                    Width="130"
+                    Background="Black"
+                    Foreground="White"
+                    Style="{DynamicResource ButtonStyle}">                   
+                </Button>
             </WrapPanel>
         </DataTemplate>
     </Page.Resources>
@@ -99,13 +114,21 @@
                 Height="500"
                 BorderThickness="1"
                 BorderBrush="Black"
-                ItemTemplate="{StaticResource ClientsTemplate}">
+                ItemTemplate="{StaticResource ClientsTemplate}"
+                ContextMenu="{Binding ClientContextMenu}">
             </ListBox>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Center"
+        <WrapPanel HorizontalAlignment="Left"
                    Grid.Row="1"
-                   Margin="-30,30,0,0">
-            <TextBlock Width="700"
+                   Margin="90,30,0,0"
+                   Width="1365">
+            <TextBlock
+                Width="300"
+                Text="Код товара"
+                FontSize="20"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Width="500"
                            FontSize="20"
                            FontWeight="Bold"
                            Text="Название"
@@ -115,7 +138,7 @@
                            FontWeight="Bold"
                            Text="Размер"
                            HorizontalAlignment="Center"/>
-            <TextBlock Width="310"
+            <TextBlock Width="110"
                            FontSize="20"
                            FontWeight="Bold"
                            Text="Стоимость"
@@ -123,6 +146,25 @@
         </WrapPanel>
         <StackPanel
             Grid.Row="12">
+            <Button
+                Name="BtnDelete"
+                Click="BtnDelete_Click"
+                Style="{DynamicResource ButtonStyle}"
+                Width="300"
+                Height="50"
+                FontSize="20"
+                Foreground="White"
+                Content="Удалить"
+                Background="Black"
+                Margin="150,-50,0,0"
+                HorizontalAlignment="Left">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button
                 Name="BtnAdd"
                 Click="BtnAdd_Click"
@@ -134,6 +176,24 @@
                 Content="Добавить"
                 Background="Black"
                 Margin="0,-50,0,0">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button
+                Name="BtnSell"
+                Click="BtnSell_Click"
+                Style="{DynamicResource ButtonStyle}"
+                Width="300"
+                Height="50"
+                FontSize="20"
+                Foreground="White"
+                Content="Продать"
+                Background="Black"
+                Margin="910,-50,0,0">
                 <Button.Resources>
                     <Style
                         TargetType="Border">

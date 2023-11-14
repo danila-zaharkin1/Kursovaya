@@ -39,7 +39,7 @@
                 FontSize="30"
                 FontFamily="/fonts/#inika"
                 Foreground="White"
-                Content="Disign Lab">                
+                Content="Design Lab">                
             </Label>
         </WrapPanel>
        <WrapPanel
@@ -51,7 +51,7 @@
                 LostFocus="TextBoxEmail_LostFocus"
                 Name="TextBoxEmail"
                 BorderBrush="White"  
-                Text="Введите почту..."
+                Text="Введите номер..."
                 Foreground="#C0C0C0"
                 FontSize="18"
                 HorizontalContentAlignment="Center"

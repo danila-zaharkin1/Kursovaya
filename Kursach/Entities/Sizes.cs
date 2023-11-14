@@ -20,7 +20,7 @@ namespace Kursach.Entities
             this.Tovari = new HashSet<Tovari>();
         }
     
-        public int ID { get; set; }
+        public System.Guid IDSize { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

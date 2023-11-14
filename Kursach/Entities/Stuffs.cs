@@ -20,9 +20,10 @@ namespace Kursach.Entities
             this.Sells = new HashSet<Sells>();
         }
     
-        public int ID { get; set; }
+        public System.Guid IDStuff { get; set; }
         public string Number { get; set; }
         public string Pass { get; set; }
+        public string FIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sells> Sells { get; set; }

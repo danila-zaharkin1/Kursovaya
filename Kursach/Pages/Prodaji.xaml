@@ -7,7 +7,44 @@
       mc:Ignorable="d" 
       d:DesignHeight="1024" d:DesignWidth="1440"
       Title="Prodaji" Background="White">
-
+    <Page.Resources>
+        <DataTemplate x:Key="SellsTemplate">
+            <WrapPanel>
+                <TextBlock
+                    Text="{Binding Stuffs.FIO}"
+                    HorizontalAlignment="Center"
+                    Width="350"
+                    FontSize="20">
+                </TextBlock>
+                <TextBlock
+                    Text="{Binding Tovari.TovarCode}"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Width="300">
+                </TextBlock>
+                <TextBlock
+                    Text="{Binding Tovari.Name}"
+                    Width="200"
+                    FontSize="20"
+                    VerticalAlignment="Center"></TextBlock>
+                <TextBlock
+                    Text="{Binding Tovari.Sizes.Name}"
+                    Width="100"
+                    FontSize="20"
+                    VerticalAlignment="Center"></TextBlock>
+                <TextBlock
+                    Text="{Binding Tovari.Price}"
+                    Width="150"
+                    FontSize="20"
+                    VerticalAlignment="Center"></TextBlock>
+                <TextBlock
+                    Text="{Binding Data}"
+                    Width="250"
+                    FontSize="20"
+                    VerticalAlignment="Center"></TextBlock>
+            </WrapPanel>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -67,77 +104,54 @@
                 </Button.Resources>
             </Button>
             <Rectangle Height="1" Width="1300" Fill="White" Margin="0,0,100,0"></Rectangle>
-        </StackPanel>
-        <StackPanel
-            Grid.Row="2"
-            Margin="0,-20,0,0">
-            <Button
-                Name="But_day"
-                Content="День" 
-                Height="37" Width="453"
-                Margin="-906,0,0,0"
-                Background="White"
-                FontSize="18"
-                Style="{DynamicResource ButtonStyle}">
-                <Button.Resources>
-                    <Style
-                        TargetType="Border">
-                        <Setter Property="CornerRadius" Value="15,0,0,15"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button
-                Name="But_Week"
-                Content="Неделя"
-                Height="37" Width="453"
-                Background="White"
-                FontSize="18"
-                Margin="0,-37,0,0"
-                Style="{DynamicResource ButtonStyle}"></Button>
-            <Button
-                Name="But_month"
-                Content="Месяц"
-                Height="37" Width="453"
-                Margin="906,-37,0,0"
-                Background="White"
-                FontSize="18"
-                Style="{DynamicResource ButtonStyle}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="0,15,15,0"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </StackPanel>
+        </StackPanel>        
         <WrapPanel
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.RowSpan="10">
             <ListBox  
-                Name="TovariList"
+                Name="ProdajiiList"
                 Margin="85,0,0,0"
                 Width="1365"
                 Height="500"
                 BorderThickness="1"
-                BorderBrush="Black">
+                BorderBrush="Black"
+                ItemTemplate="{StaticResource SellsTemplate}">
             </ListBox>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Center"
-                   Grid.Row="2"
-                   Margin="-30,30,0,0">
-            <TextBlock Width="700"
+                   Grid.Row="1"
+                   Width="1365"
+                   Margin="10,30,0,0">
+            <TextBlock Width="350"
                            FontSize="20"
                            FontWeight="Bold"
-                           Text="Название"
+                           Text="Продавец"
                            HorizontalAlignment="Center"/>
-            <TextBlock Width="310"
+            <TextBlock
+                Width="300"
+                FontSize="20"
+                Text="Код товара"
+                HorizontalAlignment="Center"
+                FontWeight="Bold"/>
+            <TextBlock Width="200"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Text="Товар"
+                           HorizontalAlignment="Center"/>
+            <TextBlock Width="100"
                            FontSize="20"
                            FontWeight="Bold"
                            Text="Размер"
                            HorizontalAlignment="Center"/>
-            <TextBlock Width="310"
+            <TextBlock Width="150"
                            FontSize="20"
                            FontWeight="Bold"
                            Text="Стоимость"
+                           HorizontalAlignment="Center"/>
+            <TextBlock Width="260"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Text="Дата продажи"
                            HorizontalAlignment="Center"/>
         </WrapPanel>
         <WrapPanel Grid.Row="11"
@@ -156,12 +170,12 @@
             Margin="1000,-33,0,0"
             Width="auto"></TextBlock>
             <TextBlock
-            Text="писят два"
+            Text="писят"
             FontSize="26"
             Margin="530,-35,0,0"
             Width="auto"></TextBlock>
             <TextBlock
-            Text="пися два"
+            Text="два"
             FontSize="26"
             Margin="1310,-34,0,0"
             Width="auto"></TextBlock>

@@ -8,31 +8,35 @@ namespace Kursach
     /// <summary>
     /// Логика взаимодействия для AddEditWin.xaml
     /// </summary>
-    public partial class AddEditWin : Window
+    public partial class AddWin : Window
     {
 
         private ShowroomEntities db = new ShowroomEntities();
-        private Tovari newTovari; 
-        public AddEditWin()
+        private Tovari newTovari;
+
+        public AddWin()
         {
             InitializeComponent();
             ComboSizes.ItemsSource = db.Sizes.ToList();
+            
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            string code = TextBoxCode.Text;
+            
             string name = TextBoxName.Text;
-            int size = ComboSizes.SelectedIndex;
             string price = TextBoxPrice.Text;
 
-            if (TextBoxName.Text != "" && ComboSizes.SelectedItem != null && TextBoxPrice.Text != "" )
+            if (TextBoxCode.Text != "" && TextBoxName.Text != "" && ComboSizes.SelectedItem != null && TextBoxPrice.Text != "" )
             {
+                var sizeSelect = db.Sizes.FirstOrDefault(s => s.Name == ComboSizes.Text);
                 newTovari = new Tovari()
                 {
-                    ID = new Random().Next(0,100),
+                    IDTovara = Guid.NewGuid(),
+                    TovarCode = code,
                     Name = name,
-                    SizesCode = size,
+                    SizesCode = sizeSelect.IDSize,
                     Price = price
                 };
                 db.Tovari.Add(newTovari);
@@ -43,6 +47,7 @@ namespace Kursach
             {
                 MessageBox.Show("Заполните все данные");
             }
+            
             
         }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

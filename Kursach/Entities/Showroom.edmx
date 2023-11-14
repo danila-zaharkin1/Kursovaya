@@ -4,30 +4,31 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище ShowroomModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище ShowroomModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Sells">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDSell" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="StuffID" Type="int" />
-          <Property Name="TovarID" Type="int" />
-          <Property Name="KOlVoTOvarov" Type="varchar" MaxLength="255" />
+          <Property Name="IDSell" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StuffID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TovarID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Data" Type="datetime" />
         </EntityType>
         <EntityType Name="Sizes">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDSize" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IDSize" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Stuffs">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDStuff" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDStuff" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Number" Type="varchar" MaxLength="255" />
           <Property Name="Pass" Type="varchar" MaxLength="255" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -41,31 +42,32 @@
         </EntityType>
         <EntityType Name="Tovari">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDTovara" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDTovara" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TovarCode" Type="varchar" MaxLength="255" />
           <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="SizesCode" Type="int" />
+          <Property Name="SizesCode" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Price" Type="varchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__Sells__StuffID__173876EA">
-          <End Role="Stuffs" Type="Self.Stuffs" Multiplicity="0..1" />
+        <Association Name="FK__Sells__StuffID__1B0907CE">
+          <End Role="Stuffs" Type="Self.Stuffs" Multiplicity="1" />
           <End Role="Sells" Type="Self.Sells" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Stuffs">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDStuff" />
             </Principal>
             <Dependent Role="Sells">
               <PropertyRef Name="StuffID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sells__TovarID__182C9B23">
-          <End Role="Tovari" Type="Self.Tovari" Multiplicity="0..1" />
+        <Association Name="FK__Sells__TovarID__1BFD2C07">
+          <End Role="Tovari" Type="Self.Tovari" Multiplicity="1" />
           <End Role="Sells" Type="Self.Sells" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tovari">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDTovara" />
             </Principal>
             <Dependent Role="Sells">
               <PropertyRef Name="TovarID" />
@@ -73,11 +75,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Tovari__SizesCod__145C0A3F">
-          <End Role="Sizes" Type="Self.Sizes" Multiplicity="0..1" />
+          <End Role="Sizes" Type="Self.Sizes" Multiplicity="1" />
           <End Role="Tovari" Type="Self.Tovari" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sizes">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDSize" />
             </Principal>
             <Dependent Role="Tovari">
               <PropertyRef Name="SizesCode" />
@@ -90,11 +92,11 @@
           <EntitySet Name="Stuffs" EntityType="Self.Stuffs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tovari" EntityType="Self.Tovari" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Sells__StuffID__173876EA" Association="Self.FK__Sells__StuffID__173876EA">
+          <AssociationSet Name="FK__Sells__StuffID__1B0907CE" Association="Self.FK__Sells__StuffID__1B0907CE">
             <End Role="Stuffs" EntitySet="Stuffs" />
             <End Role="Sells" EntitySet="Sells" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sells__TovarID__182C9B23" Association="Self.FK__Sells__TovarID__182C9B23">
+          <AssociationSet Name="FK__Sells__TovarID__1BFD2C07" Association="Self.FK__Sells__TovarID__1BFD2C07">
             <End Role="Tovari" EntitySet="Tovari" />
             <End Role="Sells" EntitySet="Sells" />
           </AssociationSet>
@@ -103,37 +105,39 @@
             <End Role="Tovari" EntitySet="Tovari" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShowroomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Sells">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDSell" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="StuffID" Type="Int32" />
-          <Property Name="TovarID" Type="Int32" />
-          <Property Name="KOlVoTOvarov" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Stuffs" Relationship="Self.FK__Sells__StuffID__173876EA" FromRole="Sells" ToRole="Stuffs" />
-          <NavigationProperty Name="Tovari" Relationship="Self.FK__Sells__TovarID__182C9B23" FromRole="Sells" ToRole="Tovari" />
+          <Property Name="IDSell" Type="Guid" Nullable="false" />
+          <Property Name="StuffID" Type="Guid" Nullable="false" />
+          <Property Name="TovarID" Type="Guid" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Stuffs" Relationship="Self.FK__Sells__StuffID__1B0907CE" FromRole="Sells" ToRole="Stuffs" />
+          <NavigationProperty Name="Tovari" Relationship="Self.FK__Sells__TovarID__1BFD2C07" FromRole="Sells" ToRole="Tovari" />
         </EntityType>
         <EntityType Name="Sizes">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDSize" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDSize" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tovari" Relationship="Self.FK__Tovari__SizesCod__145C0A3F" FromRole="Sizes" ToRole="Tovari" />
         </EntityType>
         <EntityType Name="Stuffs">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDStuff" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDStuff" Type="Guid" Nullable="false" />
           <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Pass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Sells" Relationship="Self.FK__Sells__StuffID__173876EA" FromRole="Stuffs" ToRole="Sells" />
+          <Property Name="FIO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sells" Relationship="Self.FK__Sells__StuffID__1B0907CE" FromRole="Stuffs" ToRole="Sells" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -147,33 +151,34 @@
         </EntityType>
         <EntityType Name="Tovari">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDTovara" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDTovara" Type="Guid" Nullable="false" />
+          <Property Name="TovarCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SizesCode" Type="Int32" />
+          <Property Name="SizesCode" Type="Guid" Nullable="false" />
           <Property Name="Price" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Sells" Relationship="Self.FK__Sells__TovarID__182C9B23" FromRole="Tovari" ToRole="Sells" />
+          <NavigationProperty Name="Sells" Relationship="Self.FK__Sells__TovarID__1BFD2C07" FromRole="Tovari" ToRole="Sells" />
           <NavigationProperty Name="Sizes" Relationship="Self.FK__Tovari__SizesCod__145C0A3F" FromRole="Tovari" ToRole="Sizes" />
         </EntityType>
-        <Association Name="FK__Sells__StuffID__173876EA">
-          <End Role="Stuffs" Type="Self.Stuffs" Multiplicity="0..1" />
+        <Association Name="FK__Sells__StuffID__1B0907CE">
+          <End Role="Stuffs" Type="Self.Stuffs" Multiplicity="1" />
           <End Role="Sells" Type="Self.Sells" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Stuffs">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDStuff" />
             </Principal>
             <Dependent Role="Sells">
               <PropertyRef Name="StuffID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sells__TovarID__182C9B23">
-          <End Role="Tovari" Type="Self.Tovari" Multiplicity="0..1" />
+        <Association Name="FK__Sells__TovarID__1BFD2C07">
+          <End Role="Tovari" Type="Self.Tovari" Multiplicity="1" />
           <End Role="Sells" Type="Self.Sells" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tovari">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDTovara" />
             </Principal>
             <Dependent Role="Sells">
               <PropertyRef Name="TovarID" />
@@ -181,11 +186,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Tovari__SizesCod__145C0A3F">
-          <End Role="Sizes" Type="Self.Sizes" Multiplicity="0..1" />
+          <End Role="Sizes" Type="Self.Sizes" Multiplicity="1" />
           <End Role="Tovari" Type="Self.Tovari" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sizes">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDSize" />
             </Principal>
             <Dependent Role="Tovari">
               <PropertyRef Name="SizesCode" />
@@ -198,11 +203,11 @@
           <EntitySet Name="Stuffs" EntityType="Self.Stuffs" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tovari" EntityType="Self.Tovari" />
-          <AssociationSet Name="FK__Sells__StuffID__173876EA" Association="Self.FK__Sells__StuffID__173876EA">
+          <AssociationSet Name="FK__Sells__StuffID__1B0907CE" Association="Self.FK__Sells__StuffID__1B0907CE">
             <End Role="Stuffs" EntitySet="Stuffs" />
             <End Role="Sells" EntitySet="Sells" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sells__TovarID__182C9B23" Association="Self.FK__Sells__TovarID__182C9B23">
+          <AssociationSet Name="FK__Sells__TovarID__1BFD2C07" Association="Self.FK__Sells__TovarID__1BFD2C07">
             <End Role="Tovari" EntitySet="Tovari" />
             <End Role="Sells" EntitySet="Sells" />
           </AssociationSet>
@@ -220,17 +225,17 @@
           <EntitySetMapping Name="Sells">
             <EntityTypeMapping TypeName="ShowroomModel.Sells">
               <MappingFragment StoreEntitySet="Sells">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSell" ColumnName="IDSell" />
                 <ScalarProperty Name="StuffID" ColumnName="StuffID" />
                 <ScalarProperty Name="TovarID" ColumnName="TovarID" />
-                <ScalarProperty Name="KOlVoTOvarov" ColumnName="KOlVoTOvarov" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sizes">
             <EntityTypeMapping TypeName="ShowroomModel.Sizes">
               <MappingFragment StoreEntitySet="Sizes">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSize" ColumnName="IDSize" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -238,9 +243,10 @@
           <EntitySetMapping Name="Stuffs">
             <EntityTypeMapping TypeName="ShowroomModel.Stuffs">
               <MappingFragment StoreEntitySet="Stuffs">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDStuff" ColumnName="IDStuff" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -258,7 +264,8 @@
           <EntitySetMapping Name="Tovari">
             <EntityTypeMapping TypeName="ShowroomModel.Tovari">
               <MappingFragment StoreEntitySet="Tovari">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDTovara" ColumnName="IDTovara" />
+                <ScalarProperty Name="TovarCode" ColumnName="TovarCode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SizesCode" ColumnName="SizesCode" />
                 <ScalarProperty Name="Price" ColumnName="Price" />

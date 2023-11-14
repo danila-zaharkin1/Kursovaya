@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1ec08c7b337a48d89c9c5b6f7d15e21a" Name="Diagram1">
-        <EntityTypeShape EntityType="ShowroomModel.Sells" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShowroomModel.Sizes" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShowroomModel.Stuffs" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+      <Diagram DiagramId="ca7c9fbfbfb74938b0938c152ec14bfb" Name="Diagram1">
+        <EntityTypeShape EntityType="ShowroomModel.Sells" Width="1.5" PointX="5.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShowroomModel.Sizes" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShowroomModel.Stuffs" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ShowroomModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShowroomModel.Tovari" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="ShowroomModel.FK__Sells__StuffID__173876EA" ManuallyRouted="false" />
-        <AssociationConnector Association="ShowroomModel.FK__Sells__TovarID__182C9B23" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShowroomModel.Tovari" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ShowroomModel.FK__Sells__StuffID__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ShowroomModel.FK__Sells__TovarID__1BFD2C07" ManuallyRouted="false" />
         <AssociationConnector Association="ShowroomModel.FK__Tovari__SizesCod__145C0A3F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

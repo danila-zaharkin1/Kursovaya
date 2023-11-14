@@ -39,14 +39,14 @@ namespace Kursach
             }
             else
             {
-                MessageBox.Show("Пользователя не существует");
+                MessageBox.Show("Введите данные");
             }
         }
 
 
         private void TextBoxEmail_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (TextBoxEmail.Text != "Введите почту...") return;
+            if (TextBoxEmail.Text != "Введите номер...") return;
             TextBoxEmail.Text = "";
             TextBoxEmail.Foreground = new SolidColorBrush(Colors.Black);
         }
@@ -54,7 +54,7 @@ namespace Kursach
         private void TextBoxEmail_LostFocus(object sender, RoutedEventArgs e)
         {
             if (TextBoxEmail.Text != "") return;
-            TextBoxEmail.Text = "Введите почту...";
+            TextBoxEmail.Text = "Введите номер...";
             TextBoxEmail.Foreground = new SolidColorBrush(Color.FromRgb(220, 220, 220));
         }
 
