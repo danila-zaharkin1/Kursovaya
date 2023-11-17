@@ -17,14 +17,41 @@ namespace Kursach
         {
             InitializeComponent();
             tovariForUpdate = tovaryForEdit;
-            TextBoxName.Text = tovaryForEdit.Name;
-            ComboSizes.SelectedItem = tovaryForEdit.SizesCode;
-            TextBoxPrice.Text = tovaryForEdit.Price;            
+            TextBoxCode.Text = tovariForUpdate.TovarCode.ToString();
+            TextBoxName.Text = tovariForUpdate.Name.ToString();
+            TextBoxPrice.Text = tovariForUpdate.Price.ToString();
+            var sizes = db.Sizes.ToList();
+            ComboSizes.ItemsSource = sizes;
+            foreach (var size in sizes)
+            {
+                if ((size.IDSize == tovariForUpdate.SizesCode) != true)
+                {
+                    ComboSizes.SelectedItem = size;
+                }
+            }
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (TextBoxCode.Text != "" && TextBoxName.Text != "" && ComboSizes.SelectedItem != null && TextBoxPrice.Text != "")
+            {
+                var sizeSelect = db.Sizes.FirstOrDefault(s => s.Name == ComboSizes.Text);
+                var tovar = db.Tovari.Find(tovariForUpdate.IDTovara);
+                if(tovar != null)
+                {
+                    tovar.TovarCode = TextBoxCode.Text;
+                    tovar.Name = TextBoxName.Text;
+                    tovar.SizesCode = sizeSelect.IDSize;
+                    tovar.Price = TextBoxPrice.Text;
+                }
+
+                db.SaveChanges();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Заполните все данные");
+            }
         }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {

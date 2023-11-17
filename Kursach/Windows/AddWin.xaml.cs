@@ -23,8 +23,7 @@ namespace Kursach
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            string code = TextBoxCode.Text;
-            
+            string code = TextBoxCode.Text;             
             string name = TextBoxName.Text;
             string price = TextBoxPrice.Text;
 

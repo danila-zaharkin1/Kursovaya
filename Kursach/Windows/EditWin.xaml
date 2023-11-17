@@ -20,17 +20,20 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Название" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBlock Text="Размер" Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBlock Text="Стоимость" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBox x:Name="TextBoxName" Text="{Binding Name}" Grid.Column="1" MaxLength="200" ></TextBox>
-        <TextBox x:Name="TextBoxPrice" Text="{Binding Price}" Grid.Column="1" Grid.Row="2" Width="200"></TextBox>
-        <ComboBox SelectedItem="{Binding Sizes.Name}" Grid.Column="1" DisplayMemberPath="Name" x:Name="ComboSizes" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
+        <TextBlock Text="Код товара" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Название" Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Размер" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Стоимость" Grid.Row="3" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBox x:Name="TextBoxName" Grid.Column="1" Grid.Row="1" MaxLength="200"></TextBox>
+        <TextBox x:Name="TextBoxPrice"  Grid.Column="1" Grid.Row="3" Width="200"></TextBox>
+        <TextBox x:Name="TextBoxCode"  Grid.Column="1" MaxLength="13"/>
+        <ComboBox Text="{Binding Name}" Grid.Column="1" DisplayMemberPath="Name" x:Name="ComboSizes" Grid.Row="2" Width="200" Height="30" HorizontalAlignment="Left">
         </ComboBox>
         <Button
             Name="BtnSave"
@@ -42,7 +45,7 @@
             FontSize="20"
             Width="250"
             Height="60"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.ColumnSpan="2"
             Margin="-300,0,0,0">
             <Button.Resources>
@@ -61,7 +64,7 @@
             FontSize="20"
             Width="250"
             Height="60"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.ColumnSpan="2"
             Margin="300,0,0,0">
             <Button.Resources>

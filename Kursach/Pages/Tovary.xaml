@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:Kursach"
       mc:Ignorable="d" 
       d:DesignHeight="1024" d:DesignWidth="1440"
-      Title="Tovary" Background="White" IsVisibleChanged="Page_IsVisibleChanged">
+      Title="Tovary" Background="White">
 
     <Page.Resources>        
-        <DataTemplate x:Key="ClientsTemplate">
+        <DataTemplate x:Key="TovariTemplate">
             <WrapPanel>
                 <TextBlock
                     Text="{Binding TovarCode}"
@@ -114,8 +114,7 @@
                 Height="500"
                 BorderThickness="1"
                 BorderBrush="Black"
-                ItemTemplate="{StaticResource ClientsTemplate}"
-                ContextMenu="{Binding ClientContextMenu}">
+                ItemTemplate="{StaticResource TovariTemplate}">
             </ListBox>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Left"

@@ -39,7 +39,17 @@ namespace Kursach
                 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            new AddWin().ShowDialog();
+            var selectedItem = TovariList.SelectedItem as Tovari;
+            if (selectedItem != null)
+            {
+                Tovari itemToEdit = db.Tovari.Find(selectedItem.IDTovara);
+                if (itemToEdit != null)
+                {
+                    Window editWin = new EditWin(itemToEdit);
+                    editWin.ShowDialog();
+                }
+            }
+            TovariList.ItemsSource = new ShowroomEntities().Tovari.ToList();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -52,9 +62,9 @@ namespace Kursach
                 {
                     db.Tovari.Remove(itemToDelete);
                     db.SaveChanges();
-                }
+                    MessageBox.Show("Товар успешно удален");
+                }                
             }
-            MessageBox.Show("Товар успешно удален");
             TovariList.ItemsSource = new ShowroomEntities().Tovari.ToList();
         }
 
@@ -67,12 +77,7 @@ namespace Kursach
         private void BtnProdaji_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Prodaji());
-        }
-
-        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
+        }        
 
         private void BtnSell_Click(object sender, RoutedEventArgs e)
         {
